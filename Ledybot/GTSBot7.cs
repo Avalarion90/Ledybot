@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using TwitchLib;
+using TwitchLib.Models.Client;
+using TwitchLib.Events.Client;
+
 namespace Ledybot
 {
     class GTSBot7
@@ -74,7 +78,7 @@ namespace Ledybot
                         break;
                     case (int)gtsbotstates.openpokemonwanted:
                         await Task.Delay(500);
-                        Program.helper.quicktouch(128, 50, commandtime);
+                        Program.helper.quickbuton(Program.PKTable.keyA, commandtime);
                         await Task.Delay(commandtime + delaytime);
                         botState = (int)gtsbotstates.openwhatpokemon;
                         break;
@@ -462,14 +466,19 @@ namespace Ledybot
                             Program.f1.AppendListViewItem(szTrainerName, szNickname, country, subregion, Program.PKTable.Species7[dexnumber - 1], szFC);
                             //Inject the Pokemon to box1slot1
                             Program.scriptHelper.write(0x330d9838, cloneshort, iPID);
+                            await Task.Delay(3000);
                             Program.helper.quickbuton(Program.PKTable.keyA, commandtime);
                             await Task.Delay(commandtime + delaytime + 2500);
+                            await Task.Delay(3000);
                             Program.helper.quickbuton(Program.PKTable.keyA, commandtime);
                             await Task.Delay(commandtime + delaytime);
+                            await Task.Delay(3000);
                             Program.helper.quickbuton(Program.PKTable.keyA, commandtime);
                             await Task.Delay(commandtime + delaytime);
+                            await Task.Delay(3000);
                             Program.helper.quickbuton(Program.PKTable.keyA, commandtime);
                             await Task.Delay(commandtime + delaytime);
+                            await Task.Delay(3000);
                             if (details.Item5 > 0)
                             {
                                 Program.f1.giveawayDetails[dexnumber] = new Tuple<string, string, int, int, int, ArrayList>(details.Item1, details.Item2, details.Item3, details.Item4, details.Item5 - 1, details.Item6);
